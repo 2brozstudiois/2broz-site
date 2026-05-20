@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2BROZ-studio | Precision Cuts. Timeless Style. | Reykjavík</title>
+    <meta name="description" content="2BROZ-studio — premium barber shop in Reykjavík. Master barbers, sharp fades, classic shaves. Book your appointment online today.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ink: '#0d0d0d',
+                        charcoal: '#161616',
+                        slate850: '#1f1f1f',
+                        gold: '#d4af37',
+                        goldLight: '#e8c763',
+                        goldDark: '#a8862a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+            color: #e5e5e5;
+        }
+        .font-display { font-family: 'Playfair Display', serif; }
+
+        /* Gold gradient text */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #e8c763 0%, #d4af37 50%, #a8862a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glowing CTA */
+        .glow-btn {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        .glow-btn:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Hero background */
+        .hero-bg {
+            background-image:
+                linear-gradient(rgba(13, 13, 13, 0.75), rgba(13, 13, 13, 0.95)),
+                url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Section divider */
+        .gold-divider {
+            height: 2px;
+            width: 60px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto;
+        }
+
+        /* Gallery hover */
+        .gallery-item {
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+        }
+        .gallery-item img {
+            transition: transform 0.6s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Service card */
+        .service-card {
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .service-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Nav scroll effect */
+        .nav-scrolled {
+            background-color: rgba(13, 13, 13, 0.95) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.8s ease forwards; }
+
+        /* Tab styling */
+        .filter-tab {
+            transition: all 0.3s ease;
+        }
+        .filter-tab.active {
+            background-color: #d4af37;
+            color: #0d0d0d;
+        }
+
+        /* Testimonial carousel */
+        .testimonial-card {
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0d0d0d; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #e8c763; }
+
+        /* Mobile menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-ink text-gray-200 antialiased">
+
+    <!-- ============ NAVIGATION ============ -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center gap-3">
+                <img src="https://res.cloudinary.com/timatal-ehf/image/upload/f_auto,c_limit,w_640,q_auto/profileImages/h0ytleiurqpeturjn4lo" alt="2BROZ-studio" class="h-10 w-10 rounded-full object-cover border-2 border-gold">
+                <span class="font-display text-2xl font-bold tracking-wider text-white">2BROZ<span class="text-gold">.</span><span class="text-sm font-sans text-gray-400 tracking-widest ml-1">STUDIO</span></span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <ul class="hidden lg:flex items-center gap-10 text-sm font-medium tracking-wide uppercase">
+                <li><a href="#services" class="text-gray-300 hover:text-gold transition-colors">Services</a></li>
+                <li><a href="#gallery" class="text-gray-300 hover:text-gold transition-colors">Gallery</a></li>
+                <li><a href="#hours" class="text-gray-300 hover:text-gold transition-colors">Hours</a></li>
+                <li><a href="#location" class="text-gray-300 hover:text-gold transition-colors">Location</a></li>
+            </ul>
+
+            <!-- CTA -->
+            <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="hidden lg:inline-flex items-center gap-2 bg-gold hover:bg-goldLight text-ink font-semibold px-6 py-2.5 rounded-sm transition-all duration-300 uppercase text-sm tracking-wider glow-btn">
+                <i class="fa-solid fa-scissors"></i>
+                Book Now
+            </a>
+
+            <!-- Mobile burger -->
+            <button id="burger" class="lg:hidden text-gold text-2xl z-50" aria-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============ MOBILE MENU ============ -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-full sm:w-80 bg-ink z-40 border-l border-gold/20 pt-24 px-8">
+        <ul class="flex flex-col gap-6 text-lg font-medium uppercase tracking-wide">
+            <li><a href="#services" class="mobile-link block text-gray-200 hover:text-gold border-b border-gray-800 pb-3">Services</a></li>
+            <li><a href="#gallery" class="mobile-link block text-gray-200 hover:text-gold border-b border-gray-800 pb-3">Gallery</a></li>
+            <li><a href="#hours" class="mobile-link block text-gray-200 hover:text-gold border-b border-gray-800 pb-3">Hours</a></li>
+            <li><a href="#location" class="mobile-link block text-gray-200 hover:text-gold border-b border-gray-800 pb-3">Location</a></li>
+            <li class="pt-4">
+                <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="block text-center bg-gold text-ink font-semibold px-6 py-3 rounded-sm uppercase tracking-wider">
+                    <i class="fa-solid fa-scissors mr-2"></i>Book Appointment
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ============ HERO ============ -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative pt-20">
+        <div class="text-center px-6 max-w-5xl mx-auto fade-up">
+            <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 border border-gold/40 rounded-full bg-ink/40 backdrop-blur">
+                <i class="fa-solid fa-star text-gold text-xs"></i>
+                <span class="text-xs uppercase tracking-[0.3em] text-gold font-medium">Reykjavík's Premier Barber</span>
+                <i class="fa-solid fa-star text-gold text-xs"></i>
+            </div>
+
+            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-6 text-white">
+                Precision Cuts.<br>
+                <span class="text-gold-gradient italic">Timeless</span> Style.
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Master barbers delivering sharp fades, classic shaves, and refined grooming in the heart of Reykjavík. Step in. Sit back. Leave sharper.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+                <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="glow-btn inline-flex items-center gap-3 bg-gold hover:bg-goldLight text-ink font-bold px-10 py-5 rounded-sm uppercase tracking-widest text-base">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Book Appointment
+                </a>
+                <a href="#services" class="inline-flex items-center gap-3 border border-white/30 hover:border-gold text-white hover:text-gold font-medium px-10 py-5 rounded-sm uppercase tracking-widest text-base transition-all duration-300">
+                    View Services
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Hero stats -->
+            <div class="mt-20 grid grid-cols-3 gap-6 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-gold">240+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Reviews</div>
+                </div>
+                <div class="text-center border-x border-gold/20">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-gold">5★</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Rated</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-3xl md:text-4xl font-bold text-gold">10+</div>
+                    <div class="text-xs uppercase tracking-widest text-gray-400 mt-1">Years</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <a href="#features" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold animate-bounce">
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </a>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="features" class="py-24 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="text-center px-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-ink border border-gold/40 mb-6">
+                        <i class="fa-solid fa-scissors text-gold text-3xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-white">Master Barbers</h3>
+                    <p class="text-gray-400 leading-relaxed">Trained craftsmen with years of experience in classic and modern barbering techniques.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="text-center px-6 md:border-x md:border-gold/15">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-ink border border-gold/40 mb-6">
+                        <i class="fa-solid fa-spray-can-sparkles text-gold text-3xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-white">Premium Products</h3>
+                    <p class="text-gray-400 leading-relaxed">Only the finest pomades, oils, and tools — curated from world-class grooming brands.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="text-center px-6">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-ink border border-gold/40 mb-6">
+                        <i class="fa-solid fa-whiskey-glass text-gold text-3xl"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-3 text-white">Complimentary Drinks</h3>
+                    <p class="text-gray-400 leading-relaxed">Coffee, whisky, or a cold beer — relax in style while we sharpen your look.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="py-24 bg-ink">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-gold uppercase tracking-[0.4em] text-xs mb-4 font-medium">The Menu</p>
+                <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Services &amp; <span class="text-gold-gradient italic">Pricing</span></h2>
+                <div class="gold-divider"></div>
+                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Crafted services designed around precision, comfort, and timeless style.</p>
+            </div>
+
+            <!-- Service grid -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Service 1 -->
+                <div class="service-card bg-charcoal p-8 rounded-sm flex justify-between items-start gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-crown text-gold"></i>
+                            <h3 class="font-display text-2xl font-bold text-white">Executive Fade</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">A sharp skin or taper fade engineered for the modern gentleman. Includes hot towel finish.</p>
+                        <span class="inline-flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                            <i class="fa-regular fa-clock"></i> 45 min
+                        </span>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <div class="font-display text-3xl font-bold text-gold">8.500 kr</div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-charcoal p-8 rounded-sm flex justify-between items-start gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-razor text-gold"></i>
+                            <h3 class="font-display text-2xl font-bold text-white">Classic Shave</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Traditional straight-razor shave with hot lather, hot towels, and aftercare balm.</p>
+                        <span class="inline-flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                            <i class="fa-regular fa-clock"></i> 40 min
+                        </span>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <div class="font-display text-3xl font-bold text-gold">7.900 kr</div>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-charcoal p-8 rounded-sm flex justify-between items-start gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
+                            <h3 class="font-display text-2xl font-bold text-white">Beard Trim &amp; Lineup</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Precise beard sculpting, lineup, and conditioning for a clean, defined look.</p>
+                        <span class="inline-flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                            <i class="fa-regular fa-clock"></i> 25 min
+                        </span>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <div class="font-display text-3xl font-bold text-gold">4.900 kr</div>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-charcoal p-8 rounded-sm flex justify-between items-start gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-user-tie text-gold"></i>
+                            <h3 class="font-display text-2xl font-bold text-white">Signature Haircut</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Classic scissor cut tailored to your face shape, finished with a precision styling.</p>
+                        <span class="inline-flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                            <i class="fa-regular fa-clock"></i> 35 min
+                        </span>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <div class="font-display text-3xl font-bold text-gold">7.500 kr</div>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-charcoal p-8 rounded-sm flex justify-between items-start gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-gem text-gold"></i>
+                            <h3 class="font-display text-2xl font-bold text-white">The Full Package</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">Haircut, beard trim, hot towel shave, and styling — the complete 2BROZ experience.</p>
+                        <span class="inline-flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                            <i class="fa-regular fa-clock"></i> 75 min
+                        </span>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <div class="font-display text-3xl font-bold text-gold">12.900 kr</div>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-charcoal p-8 rounded-sm flex justify-between items-start gap-6">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-child text-gold"></i>
+                            <h3 class="font-display text-2xl font-bold text-white">Kids Cut (under 12)</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-3">A clean, styled cut for young gents — patient, friendly, and quick.</p>
+                        <span class="inline-flex items-center gap-2 text-xs text-gray-500 uppercase tracking-wider">
+                            <i class="fa-regular fa-clock"></i> 25 min
+                        </span>
+                    </div>
+                    <div class="text-right shrink-0">
+                        <div class="font-display text-3xl font-bold text-gold">5.500 kr</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center mt-14">
+                <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="glow-btn inline-flex items-center gap-3 bg-gold hover:bg-goldLight text-ink font-bold px-10 py-4 rounded-sm uppercase tracking-widest text-sm">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Reserve Your Chair
+                </a>
+                <p class="text-xs text-gray-500 mt-4 italic">* Prices in ISK. Final pricing may vary by barber and add-ons.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section id="gallery" class="py-24 bg-charcoal">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <p class="text-gold uppercase tracking-[0.4em] text-xs mb-4 font-medium">The Craft</p>
+                <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Recent <span class="text-gold-gradient italic">Work</span></h2>
+                <div class="gold-divider"></div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex justify-center gap-3 mb-12 flex-wrap">
+                <button data-filter="all" class="filter-tab active px-6 py-2 border border-gold/40 text-sm uppercase tracking-widest font-medium rounded-sm">All</button>
+                <button data-filter="fades" class="filter-tab px-6 py-2 border border-gold/40 text-sm uppercase tracking-widest font-medium rounded-sm text-gray-300 hover:bg-gold/10">Fades</button>
+                <button data-filter="beards" class="filter-tab px-6 py-2 border border-gold/40 text-sm uppercase tracking-widest font-medium rounded-sm text-gray-300 hover:bg-gold/10">Beards</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="gallery-item overflow-hidden rounded-sm relative group" data-category="fades">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sharp fade" class="w-full h-72 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-gold uppercase tracking-widest text-xs font-medium">Skin Fade</span>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-sm relative group" data-category="beards">
+                    <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beard trim" class="w-full h-72 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-gold uppercase tracking-widest text-xs font-medium">Beard Sculpt</span>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-sm relative group" data-category="fades">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern fade" class="w-full h-72 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-gold uppercase tracking-widest text-xs font-medium">Mid Fade</span>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-sm relative group" data-category="beards">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classic shave" class="w-full h-72 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-gold uppercase tracking-widest text-xs font-medium">Hot Towel Shave</span>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-sm relative group" data-category="fades">
+                    <img src="https://images.unsplash.com/photo-1521490878406-bbac3a3d9b9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="High fade" class="w-full h-72 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-gold uppercase tracking-widest text-xs font-medium">High Fade</span>
+                    </div>
+                </div>
+                <div class="gallery-item overflow-hidden rounded-sm relative group" data-category="beards">
+                    <img src="https://images.unsplash.com/photo-1593702288056-f173a1466b1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Beard styling" class="w-full h-72 object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-gold uppercase tracking-widest text-xs font-medium">Beard Lineup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="py-24 bg-ink relative overflow-hidden">
+        <!-- Decorative -->
+        <div class="absolute top-10 left-10 text-gold/10 text-9xl font-display">"</div>
+        <div class="absolute bottom-10 right-10 text-gold/10 text-9xl font-display rotate-180">"</div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative">
+            <div class="text-center mb-16">
+                <p class="text-gold uppercase tracking-[0.4em] text-xs mb-4 font-medium">Word of Mouth</p>
+                <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Client <span class="text-gold-gradient italic">Stories</span></h2>
+                <div class="gold-divider"></div>
+            </div>
+
+            <div id="testimonials" class="relative max-w-4xl mx-auto min-h-[280px]">
+                <div class="testimonial-card absolute inset-0" data-index="0">
+                    <div class="bg-charcoal border border-gold/20 p-10 rounded-sm text-center">
+                        <div class="flex justify-center gap-1 text-gold mb-5">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="font-display italic text-lg md:text-xl text-gray-200 leading-relaxed mb-6">"Best fade I've had in Reykjavík, hands down. The atmosphere is incredible — feels less like a barbershop and more like a private lounge. I'm a regular now."</p>
+                        <div class="text-gold font-semibold uppercase tracking-widest text-sm">Kristján Þór</div>
+                        <div class="text-xs text-gray-500 mt-1">Regular Client</div>
+                    </div>
+                </div>
+                <div class="testimonial-card absolute inset-0 opacity-0" data-index="1">
+                    <div class="bg-charcoal border border-gold/20 p-10 rounded-sm text-center">
+                        <div class="flex justify-center gap-1 text-gold mb-5">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="font-display italic text-lg md:text-xl text-gray-200 leading-relaxed mb-6">"Walked in for a beard trim and walked out feeling like a new man. The attention to detail is unreal, and they actually listen. Worth every króna."</p>
+                        <div class="text-gold font-semibold uppercase tracking-widest text-sm">Mark Johansson</div>
+                        <div class="text-xs text-gray-500 mt-1">Verified Customer</div>
+                    </div>
+                </div>
+                <div class="testimonial-card absolute inset-0 opacity-0" data-index="2">
+                    <div class="bg-charcoal border border-gold/20 p-10 rounded-sm text-center">
+                        <div class="flex justify-center gap-1 text-gold mb-5">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="font-display italic text-lg md:text-xl text-gray-200 leading-relaxed mb-6">"The Full Package was worth every minute. Hot towel shave was a religious experience. These guys know exactly what they're doing — I'll never go anywhere else."</p>
+                        <div class="text-gold font-semibold uppercase tracking-widest text-sm">Daníel Bergmann</div>
+                        <div class="text-xs text-gray-500 mt-1">5★ Google Review</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="flex justify-center gap-3 mt-8">
+                <button class="testimonial-dot w-3 h-3 rounded-full bg-gold transition-all" data-dot="0"></button>
+                <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-600 transition-all" data-dot="1"></button>
+                <button class="testimonial-dot w-3 h-3 rounded-full bg-gray-600 transition-all" data-dot="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA STRIP ============ -->
+    <section class="py-16 bg-gradient-to-r from-ink via-charcoal to-ink border-y border-gold/20">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-3">Ready for your sharpest look?</h2>
+            <p class="text-gray-400 mb-8">Same-day appointments available. Walk-ins welcome when chairs are free.</p>
+            <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="glow-btn inline-flex items-center gap-3 bg-gold hover:bg-goldLight text-ink font-bold px-10 py-4 rounded-sm uppercase tracking-widest text-sm">
+                <i class="fa-solid fa-calendar-check"></i>
+                Book Online Now
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER / INFO ============ -->
+    <footer id="location" class="bg-charcoal pt-20 pb-8 border-t border-gold/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-12 mb-16">
+
+                <!-- Hours -->
+                <div id="hours">
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-regular fa-clock text-gold text-2xl"></i>
+                        <h3 class="font-display text-2xl font-bold text-white">Working Hours</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Monday</span><span class="text-white font-medium">09:00 — 17:00</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Tuesday</span><span class="text-white font-medium">09:00 — 17:00</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Wednesday</span><span class="text-white font-medium">09:00 — 17:00</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Thursday</span><span class="text-white font-medium">09:00 — 17:00</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Friday</span><span class="text-white font-medium">09:00 — 17:00</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Saturday</span><span class="text-white font-medium">10:00 — 15:00</span></li>
+                        <li class="flex justify-between"><span class="text-gray-400">Sunday</span><span class="text-gold/70 font-medium italic">Closed</span></li>
+                    </ul>
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-location-dot text-gold text-2xl"></i>
+                        <h3 class="font-display text-2xl font-bold text-white">Find Us</h3>
+                    </div>
+                    <p class="text-gray-300 mb-2 font-medium">2BROZ-studio</p>
+                    <p class="text-gray-400 mb-4 text-sm leading-relaxed">Suðurlandsbraut 10<br>104 Reykjavík, Iceland</p>
+
+                    <!-- Map -->
+                    <div class="rounded-sm overflow-hidden border border-gold/20 mb-4">
+                        <iframe
+                            src="https://www.google.com/maps?q=Su%C3%B0urlandsbraut+10,+Reykjav%C3%ADk,+Iceland&output=embed"
+                            width="100%" height="180" style="border:0; filter: grayscale(0.4) contrast(1.1);"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=2BROZ-studio&query_place_id=ChIJTbI1Vb501kgRy4k7Ye3LMxQ" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-gold hover:text-goldLight text-sm font-medium uppercase tracking-wider">
+                        Get Directions <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i class="fa-solid fa-headset text-gold text-2xl"></i>
+                        <h3 class="font-display text-2xl font-bold text-white">Get in Touch</h3>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fa-solid fa-phone text-gold mt-1"></i>
+                            <a href="tel:+354" class="text-gray-300 hover:text-gold transition-colors">Call to enquire</a>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fa-solid fa-envelope text-gold mt-1"></i>
+                            <a href="mailto:info@2broz.is" class="text-gray-300 hover:text-gold transition-colors">info@2broz.is</a>
+                        </li>
+                        <li class="flex items-start gap-3 text-sm">
+                            <i class="fa-solid fa-calendar text-gold mt-1"></i>
+                            <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="text-gray-300 hover:text-gold transition-colors">Book via Noona</a>
+                        </li>
+                    </ul>
+
+                    <p class="text-xs uppercase tracking-widest text-gray-500 mb-4">Follow Us</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-11 h-11 inline-flex items-center justify-center border border-gold/40 text-gold hover:bg-gold hover:text-ink rounded-sm transition-all">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-11 h-11 inline-flex items-center justify-center border border-gold/40 text-gold hover:bg-gold hover:text-ink rounded-sm transition-all">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-11 h-11 inline-flex items-center justify-center border border-gold/40 text-gold hover:bg-gold hover:text-ink rounded-sm transition-all">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="w-11 h-11 inline-flex items-center justify-center border border-gold/40 text-gold hover:bg-gold hover:text-ink rounded-sm transition-all">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom strip -->
+            <div class="border-t border-gold/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+                <div class="flex items-center gap-3">
+                    <img src="https://res.cloudinary.com/timatal-ehf/image/upload/f_auto,c_limit,w_640,q_auto/profileImages/h0ytleiurqpeturjn4lo" alt="2BROZ" class="h-8 w-8 rounded-full border border-gold/40">
+                    <span>© <span id="year"></span> 2BROZ-studio. All rights reserved.</span>
+                </div>
+                <div class="uppercase tracking-widest">Reykjavík · Iceland</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ FLOATING BOOK BUTTON (MOBILE) ============ -->
+    <a href="https://noona.app/2broz" target="_blank" rel="noopener" class="lg:hidden fixed bottom-5 right-5 z-40 bg-gold text-ink w-14 h-14 rounded-full flex items-center justify-center shadow-2xl glow-btn">
+        <i class="fa-solid fa-calendar-check text-xl"></i>
+    </a>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script>
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Sticky nav
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('nav-scrolled');
+            else navbar.classList.remove('nav-scrolled');
+        });
+
+        // Mobile menu
+        const burger = document.getElementById('burger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        burger.addEventListener('click', () => {
+            const open = mobileMenu.classList.toggle('open');
+            burger.innerHTML = open
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                burger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            });
+        });
+
+        // Gallery filter
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                filterTabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.classList.add('text-gray-300');
+                });
+                tab.classList.add('active');
+                tab.classList.remove('text-gray-300');
+
+                const filter = tab.dataset.filter;
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = '';
+                        item.style.animation = 'fadeUp 0.5s ease forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Testimonial carousel
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((t, i) => {
+                t.style.opacity = i === index ? '1' : '0';
+                t.style.pointerEvents = i === index ? 'auto' : 'none';
+            });
+            dots.forEach((d, i) => {
+                d.classList.toggle('bg-gold', i === index);
+                d.classList.toggle('bg-gray-600', i !== index);
+                if (i === index) d.classList.add('w-6');
+                else d.classList.remove('w-6');
+            });
+            currentTestimonial = index;
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showTestimonial(i));
+        });
+
+        // Auto-rotate every 6s
+        setInterval(() => {
+            const next = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(next);
+        }, 6000);
+
+        showTestimonial(0);
+
+        // Smooth scroll offset for anchor links (account for fixed nav)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
